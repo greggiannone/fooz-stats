@@ -9,6 +9,7 @@
 # dependencies
 /node_modules
 /express-server/node_modules
+/fooz-stats
 
 # IDEs and editors
 /.idea
