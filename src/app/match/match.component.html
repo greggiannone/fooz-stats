@@ -4,3 +4,9 @@
 <p>yellow team players: {{match.YellowTeamCaptain}}, {{match.YellowTeamPlayer}}</p>
 <p>black team players: {{match.BlackTeamCaptain}}, {{match.BlackTeamPlayer}}</p>
 <p>season: {{match.Season}}</p>
+<p>----------------------------- GAME 1 -----------------------------------------</p>
+<app-game *ngIf="games && match" [game]="games[0]" [match]="match"></app-game>
+<p>----------------------------- GAME 2 -----------------------------------------</p>
+<app-game *ngIf="games && match" [game]="games[1]" [match]="match"></app-game>
+<p>----------------------------- GAME 3 -----------------------------------------</p>
+<app-game *ngIf="games && match" [game]="games[2]" [match]="match"></app-game>
