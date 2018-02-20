@@ -11,6 +11,7 @@ export class MatchComponent implements OnInit
 {
 	@Input() match: Match;
 	@Input() games: Game[];
+	gameVisibility = [false, false, false];
 
 	constructor() 
 	{ 
@@ -19,5 +20,10 @@ export class MatchComponent implements OnInit
 
 	ngOnInit() 
 	{
+	}
+
+	toggleGame(gameNum: number)
+	{
+		this.gameVisibility[gameNum] = !this.gameVisibility[gameNum];
 	}
 }

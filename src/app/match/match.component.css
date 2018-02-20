@@ -1,0 +1,66 @@
+#score
+{
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+#teams
+{
+	border-radius: 10;
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+}
+
+#yellowTeam
+{
+	border-radius: 10;
+	background-color: yellow;
+	flex: 1;
+	padding: 5px;
+}
+
+#yellowTeam li
+{
+	padding: 5px;
+}
+
+#blackTeam li
+{
+	color: white;
+	padding: 5px;
+}
+
+#blackTeam
+{
+	background-color: black;
+	flex: 1;
+	padding: 5px;
+}
+
+#games
+{
+	background-color: green;
+	width: 50%;
+}
+
+#games ul
+{
+	padding: 5px;
+}
+
+#games li
+{
+	cursor: pointer;
+	padding: 5px;
+}
+
+ul
+{
+	list-style-type: none;
+	padding: 0px;
+	border: 0px;
+	margin: 0px;
+}

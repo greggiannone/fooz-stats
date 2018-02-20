@@ -1,12 +1,21 @@
-<p>id: {{match.MatchId}}</p>
-<p>yellow score: {{match.YellowTeamScore}}</p>
-<p>black score: {{match.BlackTeamScore}}</p>
-<p>yellow team players: {{match.YellowTeamCaptain}}, {{match.YellowTeamPlayer}}</p>
-<p>black team players: {{match.BlackTeamCaptain}}, {{match.BlackTeamPlayer}}</p>
-<p>season: {{match.Season}}</p>
-<p>----------------------------- GAME 1 -----------------------------------------</p>
-<app-game *ngIf="games && match" [game]="games[0]" [match]="match"></app-game>
-<p>----------------------------- GAME 2 -----------------------------------------</p>
-<app-game *ngIf="games && match" [game]="games[1]" [match]="match"></app-game>
-<p>----------------------------- GAME 3 -----------------------------------------</p>
-<app-game *ngIf="games && match" [game]="games[2]" [match]="match"></app-game>
+<h1 id="score">Yellow Team {{match.YellowTeamScore}} - {{match.BlackTeamScore}} Black Team</h1>
+<div id="teams">
+	<ul id="yellowTeam">
+		<li>{{match.YellowTeamCaptain}}
+		<li>{{match.YellowTeamPlayer}}
+	</ul>
+	<ul id="blackTeam">
+		<li>{{match.BlackTeamCaptain}}
+		<li>{{match.BlackTeamPlayer}}
+	</ul>
+</div>
+<div id="games">
+	<ul>
+		<li (click)="toggleGame(0)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 1
+		<app-game *ngIf="games && match && gameVisibility[0]" [game]="games[0]" [match]="match"></app-game>
+		<li (click)="toggleGame(1)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 2
+		<app-game *ngIf="games && match && gameVisibility[1]" [game]="games[1]" [match]="match"></app-game>
+		<li (click)="toggleGame(2)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 3
+		<app-game *ngIf="games && match && gameVisibility[2]" [game]="games[2]" [match]="match"></app-game>
+	</ul>
+</div>
