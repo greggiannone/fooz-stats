@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Match } from "./match";
+import { Match } from "./models/match";
 import { MatchesService } from "./matches.service";
 
 @Component({
@@ -21,8 +21,7 @@ export class AppComponent implements OnInit {
   {
     this.matchesService.getMatch(5).subscribe(match => 
       {
-        this.match = match
-        console.log(match);
+        this.match = match;
       });
   }
 }

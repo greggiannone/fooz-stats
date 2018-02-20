@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/games/:gameId', game);
+app.get('/games/match/:matchId', game);
 app.get('/matches/:year/:matchId', match);
 app.get('/', function(req, res) { res.end("Welcome to the fooz api") });
 

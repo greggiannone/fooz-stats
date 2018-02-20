@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Match } from '../match';
+import { Match } from '../models/match';
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',

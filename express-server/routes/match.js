@@ -22,7 +22,7 @@ router.get('/matches/:year/:matchId', function(req, res) {
         if (req.params.year == '2017') stringRequest = 'select * from FoozMatches2017 where MatchId = ' + req.params.matchId;
         request.query(stringRequest, function(err, recordset) {
             if (err) console.log(err);
-            res.end(JSON.stringify(recordset.recordset));
+            res.end(JSON.stringify(recordset.recordset[0]));
         });
     });
 });
