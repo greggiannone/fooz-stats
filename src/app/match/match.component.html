@@ -2,12 +2,12 @@
 <h3 id="date" class="header">Match played on {{date.toLocaleDateString()}}</h3>
 <div id="teams">
 	<ul id="yellowTeam">
-		<li>{{match.YellowTeamCaptain}}
-		<li>{{match.YellowTeamPlayer}}
+		<li>{{nameService.name(match.YellowTeamCaptain)}}
+		<li>{{nameService.name(match.YellowTeamPlayer)}}
 	</ul>
 	<ul id="blackTeam">
-		<li>{{match.BlackTeamCaptain}}
-		<li>{{match.BlackTeamPlayer}}
+		<li>{{nameService.name(match.BlackTeamCaptain)}}
+		<li>{{nameService.name(match.BlackTeamPlayer)}}
 	</ul>
 </div>
 <div id="games">

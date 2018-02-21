@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Game } from '../models/game';
 import { Match } from '../models/match';
+import { NameService } from '../services/name.service';
 
 @Component({
   selector: 'app-game',
@@ -13,7 +14,7 @@ export class GameComponent implements OnInit {
 	@Input() match: Match;
 	players = {};
 
-	constructor() { }
+	constructor(private nameService:NameService) { }
 
 	ngOnInit() 
 	{
@@ -47,10 +48,10 @@ export class GameComponent implements OnInit {
 
 		this.players = 
 		{
-			blackBack: blackBack,
-			yellowBack: yellowBack,
-			blackFront: blackFront,
-			yellowFront: yellowFront
+			blackBack: this.nameService.name(blackBack),
+			yellowBack: this.nameService.name(yellowBack),
+			blackFront: this.nameService.name(blackFront),
+			yellowFront: this.nameService.name(yellowFront)
 		};
 	}
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Match } from '../models/match';
 import { Game } from '../models/game';
+import { NameService } from '../services/name.service';
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
@@ -14,7 +15,7 @@ export class MatchComponent implements OnInit
 	gameVisibility = [false, false, false];
 	date: Date;
 
-	constructor() 
+	constructor(private nameService:NameService) 
 	{ 
 	}
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Match } from "./models/match";
 import { Game } from "./models/game";
-import { MatchesService } from "./matches.service";
+import { MatchesService } from "./services/matches.service";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
 	constructor(private matchesService:MatchesService)
 	{
-
+		
 	}
 
 	ngOnInit()

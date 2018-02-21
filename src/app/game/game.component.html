@@ -1,11 +1,15 @@
 <div id="teams">
     <ul id="yellowTeam">
-		<li class="score" [ngClass]="{'winner': game.YellowTeamScore > game.BlackTeamScore}">{{game.YellowTeamScore}}</li>
+		<li class="score" [ngClass]="{'winner': game.YellowTeamScore > game.BlackTeamScore}">{{game.YellowTeamScore}}
+			<span class="checkmark" *ngIf="game.YellowTeamScore > game.BlackTeamScore">✓</span>
+		</li>
         <li>Front: {{players["yellowFront"]}}</li>
         <li>Back: {{players["yellowBack"]}}</li>
     </ul>
     <ul id="blackTeam">
-		<li class="score" [ngClass]="{'winner': game.BlackTeamScore > game.YellowTeamScore}">{{game.BlackTeamScore}}</li>
+		<li class="score" [ngClass]="{'winner': game.BlackTeamScore > game.YellowTeamScore}">{{game.BlackTeamScore}}
+				<span class="checkmark" *ngIf="game.BlackTeamScore > game.YellowTeamScore">✓</span>
+		</li>
         <li>Front: {{players["blackFront"]}}</li>
         <li>Back: {{players["blackBack"]}}</li>
     </ul>
