@@ -11,12 +11,13 @@
 	</ul>
 </div>
 <div id="games">
-	<ul>
+	<ul *ngIf="games.length != 0">
 		<li (click)="toggleGame(0)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 1
 		<app-game *ngIf="games && match && gameVisibility[0]" [game]="games[0]" [match]="match"></app-game>
-		<li (click)="toggleGame(1)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 2
+		<li (click)="toggleGame(1)"><span *ngIf="!gameVisibility[1]">▶</span><span *ngIf="gameVisibility[1]">▼</span> Game 2
 		<app-game *ngIf="games && match && gameVisibility[1]" [game]="games[1]" [match]="match"></app-game>
-		<li (click)="toggleGame(2)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 3
+		<li (click)="toggleGame(2)"><span *ngIf="!gameVisibility[2]">▶</span><span *ngIf="gameVisibility[2]">▼</span> Game 3
 		<app-game *ngIf="games && match && gameVisibility[2]" [game]="games[2]" [match]="match"></app-game>
 	</ul>
+	<p *ngIf="games.length == 0">No games available for this match</p>
 </div>
