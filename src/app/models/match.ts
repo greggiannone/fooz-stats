@@ -8,5 +8,5 @@ export class Match
     BlackTeamPlayer: string;
     YellowTeamPlayer: string;
     Season: number;
-    Discriminator: string;
+    MatchDateTime: string;
 }

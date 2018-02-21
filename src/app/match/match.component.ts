@@ -12,14 +12,15 @@ export class MatchComponent implements OnInit
 	@Input() match: Match;
 	@Input() games: Game[];
 	gameVisibility = [false, false, false];
+	date: Date;
 
 	constructor() 
 	{ 
-
 	}
 
 	ngOnInit() 
 	{
+		this.date = new Date(this.match.MatchDateTime);
 	}
 
 	toggleGame(gameNum: number)

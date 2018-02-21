@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 		this.matchesService.getMatch(5).subscribe(match => 
 		{
 			this.match = match;
+			console.log(typeof(match.MatchDateTime));
 		});
 		this.matchesService.getGame(5).subscribe(games =>
 		{

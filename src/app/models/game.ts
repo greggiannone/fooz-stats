@@ -10,5 +10,4 @@ export class Game
     BlackPlayerPosition: string;
     YellowPlayerPosition: string;
     Season: number;
-    Discriminator: string;
 }
