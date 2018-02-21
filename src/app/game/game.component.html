@@ -1,10 +1,12 @@
-<p>id: {{game.GameID}}</p>
-<p>yellow score: {{game.YellowTeamScore}}</p>
-<p>black score: {{game.BlackTeamScore}}</p>
-<p>season: {{game.Season}}</p>
-<p>=============== Yellow Team ===============<p>
-<p>Front player: {{players["yellowFront"]}}</p>
-<p>Back player: {{players["yellowBack"]}}</p>
-<p>=============== Black Team ===============<p>
-<p>Front player: {{players["blackFront"]}}</p>
-<p>Back player: {{players["blackBack"]}}</p>
+<div id="teams">
+    <ul id="yellowTeam">
+		<li class="score" [ngClass]="{'winner': game.YellowTeamScore > game.BlackTeamScore}">{{game.YellowTeamScore}}</li>
+        <li>Front: {{players["yellowFront"]}}</li>
+        <li>Back: {{players["yellowBack"]}}</li>
+    </ul>
+    <ul id="blackTeam">
+		<li class="score" [ngClass]="{'winner': game.BlackTeamScore > game.YellowTeamScore}">{{game.BlackTeamScore}}</li>
+        <li>Front: {{players["blackFront"]}}</li>
+        <li>Back: {{players["blackBack"]}}</li>
+    </ul>
+</div>
