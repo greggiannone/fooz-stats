@@ -5,13 +5,30 @@
 	padding: 0px;
 	border: 0px;
 	margin: 10px;
+	width: 300px;
 	height: 100%;
-	width: 400px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;  
-	overflow: auto;
+	overflow-y: scroll;
 }
+
+#match-list::-webkit-scrollbar
+{
+    width: 10px;
+    background: transparent;
+}
+
+#match-list::-webkit-scrollbar-thumb 
+{
+    background: rgba(0, 0, 0, 0.336); 
+}
+
+#match-list::-webkit-scrollbar-track 
+{
+    background: rgb(72, 185, 72);
+}
+
 
 #match-list li
 {
