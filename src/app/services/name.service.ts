@@ -20,4 +20,11 @@ export class NameService
 	{
 		return this.nameMap[name];
 	}
+
+	initials(name: string)
+	{
+		var fullName:string = this.nameMap[name];
+		var firstLast:string[] = fullName.split(' ');
+		return `${firstLast[0].charAt(0)}${firstLast[1].charAt(0)}`;
+	}
 }

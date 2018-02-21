@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { MatchesService } from '../services/matches.service';
+import { NameService } from '../services/name.service';
+import { Match } from '../models/match';
 
 @Component({
   selector: 'app-match-list',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchListComponent implements OnInit {
 
-  constructor() { }
+	@Input() matches: Match[];
+	@Output() onSelectionChanged = new EventEmitter();
 
-  ngOnInit() {
-  }
+	selectedMatch: Match;
+	dates = {};
 
+	constructor(private matchesService: MatchesService, private nameService: NameService) 
+	{ 
+	
+	}
+
+	ngOnInit() 
+	{
+		// Assign a map of dates so we can have Dates instead of strings
+		this.matches.forEach(match => 
+		{
+			this.dates[match.MatchId] = new Date(match.MatchDateTime);
+		});
+	}
+
+	onSelect(match: Match)
+	{
+		this.onSelectionChanged.emit(match);
+		this.selectedMatch = match;
+	}
 }

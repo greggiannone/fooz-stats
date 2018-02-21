@@ -2,7 +2,8 @@
 <div id="main">
 	<app-filter-bar id="filter"></app-filter-bar>
 	<div id="results">
-		<app-match-list id="list"></app-match-list>
-		<app-match *ngIf="match && games" [match]="match" [games]="games" id="match"></app-match>
+		<app-match-list *ngIf="matches" id="list" [matches]="matches" (onSelectionChanged)="selectionChanged($event)"></app-match-list>
+		<app-match *ngIf="match" id="match"
+					[match]="match"></app-match>
 	</div>
 </div>

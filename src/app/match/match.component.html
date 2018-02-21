@@ -1,5 +1,6 @@
-<h1 id="score" class="header">Yellow Team {{match.YellowTeamScore}} - {{match.BlackTeamScore}} Black Team</h1>
-<h3 id="date" class="header">Match played on {{date.toLocaleDateString()}}</h3>
+<h1 id="score" class="header">Yellow {{match.YellowTeamScore}} - {{match.BlackTeamScore}} Black</h1>
+<h3 id="date" class="header" *ngIf="match.Season >= 2018">Match played on {{date.toLocaleDateString()}}</h3>
+<h3 id="date" class="header" *ngIf="match.Season == 2017">Match played in 2017</h3>
 <div id="teams">
 	<ul id="yellowTeam">
 		<li>{{nameService.name(match.YellowTeamCaptain)}}
@@ -10,7 +11,7 @@
 		<li>{{nameService.name(match.BlackTeamPlayer)}}
 	</ul>
 </div>
-<div id="games">
+<div id="games" *ngIf="games">
 	<ul *ngIf="games.length != 0">
 		<li (click)="toggleGame(0)"><span *ngIf="!gameVisibility[0]">▶</span><span *ngIf="gameVisibility[0]">▼</span> Game 1
 		<app-game *ngIf="games && match && gameVisibility[0]" [game]="games[0]" [match]="match"></app-game>

@@ -21,8 +21,14 @@ export class MatchesService
 
 	getMatch(id: number): Observable<Match>
 	{
-		const url = `${this.statsUrl}/matches/2018/${id}`;
+		const url = `${this.statsUrl}/matches/id/${id}`;
 		return this.http.get<Match>(url);
+	}
+
+	getMatches(): Observable<Match[]>
+	{
+		const url = `${this.statsUrl}/matches/all`;
+		return this.http.get<Match[]>(url);
 	}
 
 	getGame(matchId: number): Observable<Game[]>

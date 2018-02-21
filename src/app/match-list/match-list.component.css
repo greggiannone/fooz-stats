@@ -1,8 +1,8 @@
-ul
+#match-list
 {
 	background: rgb(72, 185, 72);
 	list-style-type: none;
-	padding: 10px;
+	padding: 0px;
 	border: 0px;
 	margin: 10px;
 	height: 100%;
@@ -10,4 +10,23 @@ ul
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;  
+	overflow: auto;
+}
+
+#match-list li
+{
+	cursor: pointer;
+	padding: 10px;
+	list-style-position: inside;
+	border-bottom: 2px solid black;
+}
+
+#match-list li:hover
+{
+	background: rgb(99, 226, 99)
+}
+
+#match-list li.selected
+{
+	background: rgb(119, 255, 119)
 }

@@ -1,7 +1,11 @@
-<ul>
-  <li>GG JF 2 - 1 TS BD: 2017</li>
-  <li>JC JF 0 - 3 TK BD: 2017</li>
-  <li>ML ZC 0 - 3 DI TS: 2017</li>
-  <li>TK BD 1 - 2 TS GG: 2/2/2018</li>
-  <li>GG ML 2 - 1 JC JF: 2/7/2018</li>
+<ul id="match-list">
+  <li *ngFor="let match of matches" (click)="onSelect(match)"
+  [ngClass]="{'selected': selectedMatch == match}">
+    {{nameService.initials(match.YellowTeamCaptain)}} 
+    {{nameService.initials(match.YellowTeamPlayer)}}
+    {{match.YellowTeamScore}} - {{match.BlackTeamScore}}
+    {{nameService.initials(match.BlackTeamCaptain)}}
+    {{nameService.initials(match.BlackTeamPlayer)}}:
+    <span *ngIf="match.Season >= 2018">{{dates[match.MatchId].toLocaleDateString()}}</span>
+    <span *ngIf="match.Season == 2017">2017</span>
 </ul>

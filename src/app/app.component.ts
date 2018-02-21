@@ -12,24 +12,24 @@ export class AppComponent implements OnInit {
 
 	title = 'fooz-stats';
 
+	matches: Match[];
 	match: Match;
-	games: Game[];
 
 	constructor(private matchesService:MatchesService)
 	{
-		
+
 	}
 
 	ngOnInit()
 	{
-		this.matchesService.getMatch(5).subscribe(match => 
+		this.matchesService.getMatches().subscribe(matches => 
 		{
-			this.match = match;
-			console.log(typeof(match.MatchDateTime));
+			this.matches = matches;
 		});
-		this.matchesService.getGame(5).subscribe(games =>
-		{
-			this.games = games;
-		})
+	}
+
+	selectionChanged(match: Match)
+	{
+		this.match = match;
 	}
 }
