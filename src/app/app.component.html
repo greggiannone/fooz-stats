@@ -1,2 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-match *ngIf="match && games" [match]="match" [games]="games"></app-match>
+<div id="main">
+	<app-filter-bar id="filter"></app-filter-bar>
+	<div id="results">
+		<app-match-list id="list"></app-match-list>
+		<app-match *ngIf="match && games" [match]="match" [games]="games" id="match"></app-match>
+	</div>
+</div>
