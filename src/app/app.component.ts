@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Match } from "./models/match";
 import { Game } from "./models/game";
-import { MatchesService } from "./services/matches.service";
+import { MatchesDataAccessService } from "./services/matches-data-access.service";
+import { MatchesService } from './services/matches.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,6 @@ export class AppComponent implements OnInit {
 
 	title = 'fooz-stats';
 
-	matches: Match[];
 	match: Match;
 
 	constructor(private matchesService:MatchesService)
@@ -22,10 +22,7 @@ export class AppComponent implements OnInit {
 
 	ngOnInit()
 	{
-		this.matchesService.getMatches().subscribe(matches => 
-		{
-			this.matches = matches;
-		});
+		this.matchesService.loadMatches();
 	}
 
 	selectionChanged(match: Match)

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core
 import { Match } from '../models/match';
 import { Game } from '../models/game';
 import { NameService } from '../services/name.service';
-import { MatchesService } from '../services/matches.service';
+import { MatchesDataAccessService } from '../services/matches-data-access.service';
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
@@ -16,7 +16,7 @@ export class MatchComponent implements OnInit
 	gameVisibility = [false, false, false];
 	date: Date;
 
-	constructor(private nameService:NameService, private matchesService:MatchesService) 
+	constructor(private nameService:NameService, private matchesDataAccessService:MatchesDataAccessService) 
 	{ 
 	}
 
@@ -36,7 +36,7 @@ export class MatchComponent implements OnInit
 	matchChanged()
 	{
 		this.date = new Date(this.match.MatchDateTime);
-		this.matchesService.getGame(this.match.MatchId).subscribe(games => this.games = games);
+		this.matchesDataAccessService.getGame(this.match.MatchId).subscribe(games => this.games = games);
 	}
 
 	toggleGame(gameNum: number)

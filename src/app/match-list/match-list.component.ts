@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { MatchesService } from '../services/matches.service';
+import { MatchesDataAccessService } from '../services/matches-data-access.service';
 import { NameService } from '../services/name.service';
 import { Match } from '../models/match';
+import { MatchesService } from '../services/matches.service';
 
 @Component({
   selector: 'app-match-list',
@@ -10,13 +11,12 @@ import { Match } from '../models/match';
 })
 export class MatchListComponent implements OnInit {
 
-	@Input() matches: Match[];
 	@Output() onSelectionChanged = new EventEmitter();
 
 	selectedMatch: Match;
 	dates = {};
 
-	constructor(private matchesService: MatchesService, private nameService: NameService) 
+	constructor(private nameService: NameService, private matchesService: MatchesService) 
 	{ 
 	
 	}
@@ -24,7 +24,7 @@ export class MatchListComponent implements OnInit {
 	ngOnInit() 
 	{
 		// Assign a map of dates so we can have Dates instead of strings
-		this.matches.forEach(match => 
+		this.matchesService.filteredMatches.forEach(match => 
 		{
 			this.dates[match.MatchId] = new Date(match.MatchDateTime);
 		});

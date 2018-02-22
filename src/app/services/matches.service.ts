@@ -1,39 +1,49 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Match } from '../models/match';
-import { Game } from '../models/game';
-import { Observable } from 'rxjs/Rx';
-import { map, tap } from 'rxjs/operators';
-
-const httpOptions = 
-{
-	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { MatchesDataAccessService } from './matches-data-access.service'
 
 @Injectable()
 export class MatchesService 
 {
-	private statsUrl = 'http://ONE-022661:3000'
-	constructor(private http: HttpClient) 
-	{
-		
+	allMatches: Match[];
+	filteredMatches: Match[];
+
+	private nameFilter: string;
+
+	constructor(private matchesDataAccess: MatchesDataAccessService) 
+	{ 
+
 	}
 
-	getMatch(id: number): Observable<Match>
+	loadMatches()
 	{
-		const url = `${this.statsUrl}/matches/id/${id}`;
-		return this.http.get<Match>(url);
+		this.matchesDataAccess.getMatches().subscribe(matches => 
+		{
+			this.allMatches = matches;
+			this.refreshFilter();
+		}); 
 	}
 
-	getMatches(): Observable<Match[]>
+	filterName(name: string)
 	{
-		const url = `${this.statsUrl}/matches/all`;
-		return this.http.get<Match[]>(url);
+		this.nameFilter = name;
+		this.refreshFilter();
 	}
 
-	getGame(matchId: number): Observable<Game[]>
+	private refreshFilter()
 	{
-		const url = `${this.statsUrl}/games/match/${matchId}`;
-		return this.http.get<Game[]>(url);
+		// Filter out matches based on the criteria we have cached
+		this.filteredMatches = this.allMatches.filter(match =>
+		{
+			if (this.nameFilter != null && this.nameFilter != '')
+			{
+				return match.BlackTeamCaptain.includes(this.nameFilter) || match.BlackTeamPlayer.includes(this.nameFilter) ||
+					match.YellowTeamCaptain.includes(this.nameFilter) || match.YellowTeamPlayer.includes(this.nameFilter);
+			}
+			else
+			{
+				return true;
+			}
+		});
 	}
 }

@@ -1,5 +1,5 @@
 <ul id="match-list">
-  <li *ngFor="let match of matches" (click)="onSelect(match)"
+  <li *ngFor="let match of matchesService.filteredMatches" (click)="onSelect(match)"
   [ngClass]="{'selected': selectedMatch == match}">
     {{nameService.initials(match.YellowTeamCaptain)}} 
     {{nameService.initials(match.YellowTeamPlayer)}}

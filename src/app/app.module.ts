@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { MatchComponent } from './match/match.component';
+import { MatchesDataAccessService } from './services/matches-data-access.service';
 import { MatchesService } from './services/matches.service';
 import { NameService } from './services/name.service';
 import { MatchListComponent } from './match-list/match-list.component';
@@ -24,8 +25,9 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
         HttpClientModule
     ],
     providers: [
-        MatchesService,
-        NameService
+        MatchesDataAccessService,
+        NameService,
+        MatchesService
     ],
     bootstrap: [AppComponent]
 })
