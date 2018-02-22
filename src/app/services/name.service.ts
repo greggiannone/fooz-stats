@@ -16,12 +16,14 @@ export class NameService
 		"zchupka": "Zac Chupka",
 	};
 
-	name(name: string)
+	// Returns the full name of the player based on the username
+	name(name: string): string
 	{
 		return this.nameMap[name];
 	}
 
-	initials(name: string)
+	/// Returns the initials of the player based on the username
+	initials(name: string): string
 	{
 		var fullName:string = this.nameMap[name];
 		var firstLast:string[] = fullName.split(' ');

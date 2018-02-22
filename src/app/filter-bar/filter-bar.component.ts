@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatchesService } from '../services/matches.service';
 
 @Component({
   selector: 'app-filter-bar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterBarComponent implements OnInit {
 
-  constructor() { }
+	constructor(private matchesService: MatchesService) { }
 
-  ngOnInit() {
-  }
+	ngOnInit()
+	{
+	}
 
+	onKeyFilter(value: string)
+	{
+		this.matchesService.filterName(value)
+	}
 }

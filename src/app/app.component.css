@@ -16,3 +16,9 @@
 {
 	flex: 1;
 }
+
+#filter
+{
+	padding: 10px;
+	background: rgb(72, 185, 72);
+}

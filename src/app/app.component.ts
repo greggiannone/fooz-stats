@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
 	match: Match;
 
-	constructor(private matchesService:MatchesService)
+	constructor(private matchesService: MatchesService)
 	{
 
 	}

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Match } from '../models/match';
 import { MatchesDataAccessService } from './matches-data-access.service'
+import { NameService } from './name.service'
 
 @Injectable()
 export class MatchesService 
@@ -10,7 +11,7 @@ export class MatchesService
 
 	private nameFilter: string;
 
-	constructor(private matchesDataAccess: MatchesDataAccessService) 
+	constructor(private matchesDataAccess: MatchesDataAccessService, private nameService: NameService) 
 	{ 
 
 	}
@@ -37,13 +38,20 @@ export class MatchesService
 		{
 			if (this.nameFilter != null && this.nameFilter != '')
 			{
-				return match.BlackTeamCaptain.includes(this.nameFilter) || match.BlackTeamPlayer.includes(this.nameFilter) ||
-					match.YellowTeamCaptain.includes(this.nameFilter) || match.YellowTeamPlayer.includes(this.nameFilter);
+				return this.checkName(match.BlackTeamCaptain, this.nameFilter) || 
+					this.checkName(match.BlackTeamPlayer, this.nameFilter) ||
+					this.checkName(match.YellowTeamCaptain, this.nameFilter) || 
+					this.checkName(match.YellowTeamPlayer, this.nameFilter);
 			}
 			else
 			{
 				return true;
 			}
 		});
+	}
+
+	private checkName(username: string, search: string): boolean
+	{
+		return this.nameService.name(username).toLowerCase().includes(search)
 	}
 }
