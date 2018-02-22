@@ -8,12 +8,14 @@ export class MatchesService
 {
 	allMatches: Match[];
 	filteredMatches: Match[];
+	error: boolean;
 
 	private nameFilter: string;
+	private seasonFilter: string;
 
 	constructor(private matchesDataAccess: MatchesDataAccessService, private nameService: NameService) 
 	{ 
-
+		this.error = false;
 	}
 
 	loadMatches()
@@ -22,6 +24,15 @@ export class MatchesService
 		{
 			this.allMatches = matches;
 			this.refreshFilter();
+			if (this.allMatches == null || this.allMatches.length == 0)
+			{
+				console.log("error");
+				this.error = true;
+			}
+			else
+			{
+				this.error = false;
+			}
 		}); 
 	}
 
@@ -31,22 +42,31 @@ export class MatchesService
 		this.refreshFilter();
 	}
 
+	filterSeason(season: string)
+	{
+		this.seasonFilter = season;
+		this.refreshFilter();
+	}
+
 	private refreshFilter()
 	{
 		// Filter out matches based on the criteria we have cached
 		this.filteredMatches = this.allMatches.filter(match =>
 		{
+			var matchesName = true, matchesSeason = true;
 			if (this.nameFilter != null && this.nameFilter != '')
 			{
-				return this.checkName(match.BlackTeamCaptain, this.nameFilter) || 
+				matchesName = this.checkName(match.BlackTeamCaptain, this.nameFilter) || 
 					this.checkName(match.BlackTeamPlayer, this.nameFilter) ||
 					this.checkName(match.YellowTeamCaptain, this.nameFilter) || 
 					this.checkName(match.YellowTeamPlayer, this.nameFilter);
 			}
-			else
+			if (this.seasonFilter != null && this.seasonFilter != '')
 			{
-				return true;
+				matchesSeason = match.Season.toString() == this.seasonFilter;
 			}
+
+			return matchesName && matchesSeason;
 		});
 	}
 

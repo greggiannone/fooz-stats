@@ -22,3 +22,11 @@
 	padding: 10px;
 	background: rgb(72, 185, 72);
 }
+
+#error
+{
+	color: red;
+	font-size: 100px;
+	text-align: center;
+	padding: 50px;
+}

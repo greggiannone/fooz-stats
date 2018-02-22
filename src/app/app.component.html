@@ -1,9 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div id="main">
 	<app-filter-bar id="filter"></app-filter-bar>
-	<div id="results">
+	<div id="results" *ngIf="!matchesService.error">
 		<app-match-list *ngIf="matchesService.filteredMatches" id="list" (onSelectionChanged)="selectionChanged($event)"></app-match-list>
 		<app-match *ngIf="match" id="match"
 					[match]="match"></app-match>
+	</div>
+	<div id="error" *ngIf="matchesService.error">
+		The system is down!
 	</div>
 </div>

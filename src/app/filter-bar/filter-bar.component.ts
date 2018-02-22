@@ -18,4 +18,17 @@ export class FilterBarComponent implements OnInit {
 	{
 		this.matchesService.filterName(value)
 	}
+
+	onSeasonFilterChange(value: string)
+	{
+		// Set filter to be any season if they pick the any option
+		if (value == "any") 
+		{
+			this.matchesService.filterSeason('');
+		}
+		else
+		{
+			this.matchesService.filterSeason(value);
+		} 
+	}
 }

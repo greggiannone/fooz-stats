@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Match } from '../models/match';
 import { Game } from '../models/game';
 import { Observable } from 'rxjs/Rx';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 const httpOptions = 
 {
@@ -22,18 +23,38 @@ export class MatchesDataAccessService
 	getMatch(id: number): Observable<Match>
 	{
 		const url = `${this.statsUrl}/matches/id/${id}`;
-		return this.http.get<Match>(url);
+		return this.http.get<Match>(url)
+		.pipe(
+			catchError(this.handleError<Match>('getMatch'))
+		);
 	}
 
 	getMatches(): Observable<Match[]>
 	{
 		const url = `${this.statsUrl}/matches/all`;
-		return this.http.get<Match[]>(url);
+		return this.http.get<Match[]>(url)
+		.pipe(
+			catchError(this.handleError('getMatches', []))
+		);
 	}
 
 	getGame(matchId: number): Observable<Game[]>
 	{
 		const url = `${this.statsUrl}/games/match/${matchId}`;
-		return this.http.get<Game[]>(url);
+		return this.http.get<Game[]>(url)
+		.pipe(
+			catchError(this.handleError('getGame', []))
+		);
+	}
+
+	private handleError<T> (operation = 'operation', result?: T) 
+	{
+		return (error: any): Observable<T> => {
+	  
+		  console.error(error);
+	  
+		  // Let the app keep running by returning an empty result.
+		  return of(result as T);
+		};
 	}
 }

@@ -1,2 +1,11 @@
 <p>Filter Matches</p>
-Name: <input (keyup)="onKeyFilter($event.target.value)">
+<ul>
+  <li class="criteria">Name: <input (keyup)="onKeyFilter($event.target.value)"></li>
+  <li class="criteria">Season: 
+    <select (change)="onSeasonFilterChange($event.target.value)">
+      <option value="any">Any</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+    </select>
+  </li>
+</ul>

@@ -7,3 +7,26 @@ p
 	background: rgb(109, 219, 109);
 	text-align: center;
 }
+
+select
+{
+	height: 22px;
+}
+
+.criteria
+{
+	padding-left: 20px;
+}
+
+ul
+{
+	display: inline;
+	list-style: none;
+	vertical-align: middle;
+}
+
+li
+{
+	float: left;
+	vertical-align: middle;
+}
