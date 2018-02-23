@@ -1,73 +1,23 @@
 const express = require('express');
-const sql = require('mssql');
 const router = express.Router();
-
-var config = {
-    user: 'foozapi',
-    password: 'f00zstats',
-    server: 'ONE-017054',
-    database: 'HMCTFS',
-    options: {
-        instanceName: 'ALACRITY'
-    }
-}
+const dbAccess = require('../util/db_access');
+const sql = require('mssql');
 
 router.get('/matches/id/:matchId', function(req, res) 
 {
-    const pool = new sql.ConnectionPool(config, err =>
-    {
-        if (err)
+    dbAccess.sendQuery('select * from FoozMatches where MatchID = @MatchID',
+    [
         {
-            console.log(err);
+            name: 'MatchID',
+            type: sql.Int,
+            value: req.params.matchId
         }
-        else
-        {
-            var request = new sql.Request(pool);
-            var stringRequest = 'select * from FoozMatches where MatchId = ' + req.params.matchId;
-            console.log(stringRequest);
-            request.query(stringRequest, function(err, recordset) 
-            {
-                if (err)
-                {
-                    res.end("Invalid request");
-                    console.log(err);
-                }
-                else
-                {
-                    res.end(JSON.stringify(recordset.recordset[0]));
-                }
-            });
-        }
-    });
+    ], res);
 });
 
-router.get('/matches/all', function(req, res)
+router.get('/matches/all', function(req, res) 
 {
-    const pool = new sql.ConnectionPool(config, err =>
-    {
-        if (err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            var request = new sql.Request(pool);
-            var stringRequest = 'select top 100 * from FoozMatches order by MatchId desc';
-            console.log(stringRequest);
-            request.query(stringRequest, function(err, recordset) 
-            {
-                if (err)
-                {
-                    res.end("Invalid request");
-                    console.log(err);
-                }
-                else
-                {
-                    res.end(JSON.stringify(recordset.recordset));
-                }
-            });
-        }
-    });
-})
+    dbAccess.sendQuery('select top 100 * from FoozMatches order by MatchID desc', [], res);
+});
 
 module.exports = router;
