@@ -15,13 +15,27 @@ var config = {
 router.get('/games/:gameId', function(req, res) {
     const pool = new sql.ConnectionPool(config, err =>
     {
-        if (err) console.log(err);
-        var request = new sql.Request(pool);
-        var stringRequest = 'select * from FoozGames where GameID = ' + req.params.gameId;
-        request.query(stringRequest, function(err, recordset) {
-            if (err) console.log(err);
-            res.end(JSON.stringify(recordset.recordset[0]));
-        });
+        if (err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            var request = new sql.Request(pool);
+            var stringRequest = 'select * from FoozGames where GameID = ' + req.params.gameId;
+            request.query(stringRequest, function(err, recordset) 
+            {
+                if (err)
+                {
+                    res.end("Invalid request");
+                    console.log(err);
+                }
+                else
+                {
+                    res.end(JSON.stringify(recordset.recordset[0]));
+                }
+            });
+        }
     });
 });
 
@@ -35,14 +49,21 @@ router.get('/games/match/:matchId', function(req, res) {
 		}
 		else
 		{
-			var request = new sql.Request(pool);
-			var stringRequest = 'select * from FoozGames where MatchID = ' + req.params.matchId;
-			console.log(stringRequest);
-			request.query(stringRequest, function(err, recordset) 
-			{
-				if (err) console.log(err);
-				else res.end(JSON.stringify(recordset.recordset));
-			});
+            var request = new sql.Request(pool);
+            var stringRequest = 'select * from FoozGames where MatchID = ' + req.params.matchId;
+            console.log(stringRequest);
+            request.query(stringRequest, function(err, recordset) 
+            {
+                if (err)
+                {
+                    res.end("Invalid request");
+                    console.log(err);
+                }
+                else
+                {
+                    res.end(JSON.stringify(recordset.recordset));
+                }
+            });
 		}
 	});
 });

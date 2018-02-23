@@ -1,6 +1,6 @@
 #match-list
 {
-	background: rgb(72, 185, 72);
+	background: rgb(111, 214, 111);
 	list-style-type: none;
 	padding: 0px;
 	border: 0px;
@@ -26,7 +26,7 @@
 
 #match-list::-webkit-scrollbar-track 
 {
-    background: rgb(72, 185, 72);
+    background: rgb(111, 214, 111);
 }
 
 
@@ -36,14 +36,20 @@
 	padding: 10px;
 	list-style-position: inside;
 	border-bottom: 2px solid black;
+	background: rgb(72, 185, 72);
+}
+
+#match-list li:last-child
+{
+	border: 0px;
 }
 
 #match-list li:hover
 {
-	background: rgb(99, 226, 99)
+	background: rgb(119, 255, 119);
 }
 
 #match-list li.selected
 {
-	background: rgb(119, 255, 119)
+	background: rgb(177, 255, 177);
 }
