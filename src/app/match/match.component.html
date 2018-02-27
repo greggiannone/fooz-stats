@@ -1,6 +1,8 @@
-<h1 id="score" class="header">Yellow {{match.YellowTeamScore}} - {{match.BlackTeamScore}} Black</h1>
-<h3 id="date" class="header" *ngIf="match.Season >= 2018">Match played on {{date.toLocaleDateString()}}</h3>
-<h3 id="date" class="header" *ngIf="match.Season == 2017">Match played in 2017</h3>
+<div class="header" id="header">
+	<h1 id="score" >Yellow {{match.YellowTeamScore}} - {{match.BlackTeamScore}} Black</h1>
+	<h3 *ngIf="match.Season >= 2018">Match played on {{date.toLocaleDateString()}}</h3>
+	<h3 *ngIf="match.Season == 2017">Match played in 2017</h3>
+</div>
 <div id="teams">
 	<ul id="yellowTeam">
 		<li (click)="onPlayerClicked(match.YellowTeamCaptain)" class="playerName">{{nameService.name(match.YellowTeamCaptain)}}
