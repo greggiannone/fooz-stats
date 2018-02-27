@@ -15,7 +15,7 @@
 
 #match
 {
-	flex: 1;
+	flex: 3;
 }
 
 #filter
@@ -30,4 +30,10 @@
 	font-size: 100px;
 	text-align: center;
 	padding: 50px;
+}
+
+#player
+{
+	flex: 1;
+	margin-right: 20px;
 }
