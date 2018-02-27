@@ -3,12 +3,12 @@
 <h3 id="date" class="header" *ngIf="match.Season == 2017">Match played in 2017</h3>
 <div id="teams">
 	<ul id="yellowTeam">
-		<li>{{nameService.name(match.YellowTeamCaptain)}}
-		<li>{{nameService.name(match.YellowTeamPlayer)}}
+		<li (click)="onPlayerClicked(match.YellowTeamCaptain)" class="playerName">{{nameService.name(match.YellowTeamCaptain)}}
+		<li (click)="onPlayerClicked(match.YellowTeamPlayer)" class="playerName">{{nameService.name(match.YellowTeamPlayer)}}
 	</ul>
 	<ul id="blackTeam">
-		<li>{{nameService.name(match.BlackTeamCaptain)}}
-		<li>{{nameService.name(match.BlackTeamPlayer)}}
+		<li (click)="onPlayerClicked(match.BlackTeamCaptain)" class="playerName">{{nameService.name(match.BlackTeamCaptain)}}
+		<li (click)="onPlayerClicked(match.BlackTeamPlayer)" class="playerName">{{nameService.name(match.BlackTeamPlayer)}}
 	</ul>
 </div>
 <div id="games" *ngIf="games">

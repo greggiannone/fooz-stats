@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 	title = 'fooz-stats';
 
 	match: Match;
-	player: Player;
+	selectedPlayer: Player;
 
 	constructor(private matchesService: MatchesService, private matchesDAService: MatchesDataAccessService)
 	{
@@ -25,11 +25,16 @@ export class AppComponent implements OnInit {
 	ngOnInit()
 	{
 		this.matchesService.loadMatches();
-		this.matchesDAService.getPlayerStats('ggiannone').subscribe(player => this.player = player);
 	}
 
 	selectionChanged(match: Match)
 	{
 		this.match = match;
+		this.selectedPlayer = null;
+	}
+
+	onPlayerSelected(player: string)
+	{
+		this.matchesDAService.getPlayerStats(player).subscribe(player => this.selectedPlayer = player);
 	}
 }

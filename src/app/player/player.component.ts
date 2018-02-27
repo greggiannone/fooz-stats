@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../models/player';
+import { NameService } from '../services/name.service';
 
 @Component({
   selector: 'app-player',
@@ -10,7 +11,7 @@ export class PlayerComponent implements OnInit {
 
 	@Input() player: Player;
 
-	constructor() { }
+	constructor(private nameService:NameService) { }
 
 	ngOnInit() 
 	{

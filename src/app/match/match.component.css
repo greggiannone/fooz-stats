@@ -84,3 +84,9 @@ p
 	margin: 0px;
 	padding: 10px;
 }
+
+.playerName
+{
+	text-decoration: underline;
+	cursor: pointer;
+}

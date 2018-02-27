@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { Match } from '../models/match';
 import { Game } from '../models/game';
 import { NameService } from '../services/name.service';
@@ -12,6 +12,8 @@ import { MatchesDataAccessService } from '../services/matches-data-access.servic
 export class MatchComponent implements OnInit
 {
 	@Input() match: Match;
+	@Output() onPlayerSelected = new EventEmitter();
+
 	games: Game[];
 	gameVisibility = [false, false, false];
 	date: Date;
@@ -43,5 +45,10 @@ export class MatchComponent implements OnInit
 	toggleGame(gameNum: number)
 	{
 		this.gameVisibility[gameNum] = !this.gameVisibility[gameNum];
+	}
+
+	onPlayerClicked(player: string)
+	{
+		this.onPlayerSelected.emit(player);
 	}
 }
