@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 // Get our API routes
 const game = require('./routes/game');
 const match = require('./routes/match');
+const player = require('./routes/player');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get('/games/:gameId', game);
 app.get('/games/match/:matchId', game);
 app.get('/matches/id/:matchId', match);
 app.get('/matches/all', match);
+app.get('/players/:playerName/matchstats', player);
 app.get('/', function(req, res) { res.end("Welcome to the fooz api") });
 app.get('/*', function(req, res) { res.end("Invalid request") });
 

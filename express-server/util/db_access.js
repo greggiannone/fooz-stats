@@ -46,7 +46,14 @@ module.exports =
 					}
 					else
 					{
-						res.end(JSON.stringify(recordset.recordset));
+						if (recordset.recordset.length == 1)
+						{
+							res.end(JSON.stringify(recordset.recordset[0]))
+						}
+						else
+						{
+							res.end(JSON.stringify(recordset.recordset));
+						}
 					}
 				});
 			});

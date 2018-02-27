@@ -11,6 +11,7 @@ import { MatchesService } from './services/matches.service';
 import { NameService } from './services/name.service';
 import { MatchListComponent } from './match-list/match-list.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
         GameComponent,
         MatchComponent,
         MatchListComponent,
-        FilterBarComponent
+        FilterBarComponent,
+        PlayerComponent
     ],
     imports: [
         BrowserModule,

@@ -27,7 +27,7 @@ export class MatchComponent implements OnInit
 	ngOnChanges(changes: SimpleChange)
 	{
 		// Make sure the change event is from the match input
-		if (changes["match"].currentValue == this.match)
+		if (changes["match"])
 		{
 			this.matchChanged();
 		}
@@ -37,6 +37,7 @@ export class MatchComponent implements OnInit
 	{
 		this.date = new Date(this.match.MatchDateTime);
 		this.matchesDataAccessService.getGame(this.match.MatchId).subscribe(games => this.games = games);
+		this.gameVisibility = [false, false, false];
 	}
 
 	toggleGame(gameNum: number)
