@@ -1,9 +1,0 @@
-<h3 id="title" class="header">Player Stats</h3>
-<div id="stats" *ngIf="player" class="content">
-  <h4>{{nameService.name(player.PlayerName)}}</h4>
-  <p>Matches: {{player.MatchWins}} - {{player.MatchLosses}} ({{(100 * player.MatchWins/(player.MatchWins + player.MatchLosses)).toFixed(2)}}% win rate)</p>
-  <p>Games: {{player.GameWins}} - {{player.GameLosses}} ({{(100 * player.GameWins/(player.GameWins + player.GameLosses)).toFixed(2)}}% win rate)</p>
-</div>
-<div *ngIf="!player" class="content">
-  <p>Select a player to see their stats!</p>
-</div>

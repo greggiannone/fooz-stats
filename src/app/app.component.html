@@ -6,7 +6,7 @@
 		<app-match *ngIf="match" id="match"
 					[match]="match"
 					(onPlayerSelected)="onPlayerSelected($event)"></app-match>
-		<app-player  id="player" [player]="selectedPlayer" *ngIf="match"></app-player>
+		<app-match-stats id="player" [match]="match" *ngIf="match"></app-match-stats>
 	</div>
 	<div id="error" *ngIf="matchesService.error">
 		The system is down!

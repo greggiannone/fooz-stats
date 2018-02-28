@@ -1,0 +1,5 @@
+<div id="stats" *ngIf="stats">
+  <h4>{{stats.Name}}</h4>
+  <p>Matches: {{stats.MatchWins}} - {{stats.MatchLosses}} ({{(100 * stats.MatchWins/(stats.MatchWins + stats.MatchLosses)).toFixed(2)}}% win rate)</p>
+  <p>Games: {{stats.GameWins}} - {{stats.GameLosses}} ({{(100 * stats.GameWins/(stats.GameWins + stats.GameLosses)).toFixed(2)}}% win rate)</p>
+</div>

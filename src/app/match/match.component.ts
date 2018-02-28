@@ -46,9 +46,4 @@ export class MatchComponent implements OnInit
 	{
 		this.gameVisibility[gameNum] = !this.gameVisibility[gameNum];
 	}
-
-	onPlayerClicked(player: string)
-	{
-		this.onPlayerSelected.emit(player);
-	}
 }

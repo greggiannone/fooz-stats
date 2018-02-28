@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Match } from '../models/match';
 import { Game } from '../models/game';
-import { Player } from '../models/player'
+import { Stats } from '../models/stats'
 import { Observable } from 'rxjs/Rx';
 import { map, tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -39,12 +39,21 @@ export class MatchesDataAccessService
 		);
 	}
 
-	getPlayerStats(playerName: string): Observable<Player>
+	getPlayerStats(playerName: string): Observable<Stats>
 	{
 		const url = `${this.statsUrl}/players/${playerName}/matchstats`;
-		return this.http.get<Player>(url)
+		return this.http.get<Stats>(url)
 		.pipe(
 			catchError(this.handleError('getPlayerStats', null))
+		);
+	}
+
+	getTeamStats(playerOne: string, playerTwo: string): Observable<Stats>
+	{
+		const url = `${this.statsUrl}/players/team/${playerOne}/${playerTwo}`;
+		return this.http.get<Stats>(url)
+		.pipe(
+			catchError(this.handleError('getTeamStats', null))
 		);
 	}
 

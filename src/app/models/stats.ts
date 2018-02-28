@@ -1,6 +1,6 @@
-export class Player
+export class Stats
 {
-	PlayerName: string;
+	Name: string;
 	MatchWins: number;
 	MatchLosses: number;
 	GameWins: number;

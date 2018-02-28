@@ -29,6 +29,7 @@ app.get('/games/match/:matchId', game);
 app.get('/matches/id/:matchId', match);
 app.get('/matches/all', match);
 app.get('/players/:playerName/matchstats', player);
+app.get('/players/team/:playerOneName/:playerTwoName', player)
 app.get('/', function(req, res) { res.end("Welcome to the fooz api") });
 app.get('/*', function(req, res) { res.end("Invalid request") });
 

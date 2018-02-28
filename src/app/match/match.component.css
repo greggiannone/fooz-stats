@@ -3,6 +3,16 @@
 	width: 95%;
 }
 
+#score
+{
+	margin: 5px;
+}
+
+h3
+{
+	margin: 5px;
+}
+
 #teams
 {
 	border-radius: 10;

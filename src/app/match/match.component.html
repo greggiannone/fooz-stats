@@ -5,12 +5,12 @@
 </div>
 <div id="teams">
 	<ul id="yellowTeam">
-		<li (click)="onPlayerClicked(match.YellowTeamCaptain)" class="playerName">{{nameService.name(match.YellowTeamCaptain)}}
-		<li (click)="onPlayerClicked(match.YellowTeamPlayer)" class="playerName">{{nameService.name(match.YellowTeamPlayer)}}
+		<li>{{nameService.name(match.YellowTeamCaptain)}}
+		<li>{{nameService.name(match.YellowTeamPlayer)}}
 	</ul>
 	<ul id="blackTeam">
-		<li (click)="onPlayerClicked(match.BlackTeamCaptain)" class="playerName">{{nameService.name(match.BlackTeamCaptain)}}
-		<li (click)="onPlayerClicked(match.BlackTeamPlayer)" class="playerName">{{nameService.name(match.BlackTeamPlayer)}}
+		<li>{{nameService.name(match.BlackTeamCaptain)}}
+		<li>{{nameService.name(match.BlackTeamPlayer)}}
 	</ul>
 </div>
 <div id="games" *ngIf="games">

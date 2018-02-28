@@ -1,0 +1,15 @@
+::ng-deep h4
+{
+	margin: 0px;
+	margin-top: 20px;
+}
+
+#yellowStats::ng-deep h4
+{
+	margin-top: 0px;
+}
+
+#blackStats::ng-deep h4
+{
+	margin-top: 0px;
+}

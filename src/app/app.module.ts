@@ -11,7 +11,8 @@ import { MatchesService } from './services/matches.service';
 import { NameService } from './services/name.service';
 import { MatchListComponent } from './match-list/match-list.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
-import { PlayerComponent } from './player/player.component';
+import { SmallStatView } from './small-stat-view/small-stat-view.component';
+import { MatchStatsComponent } from './match-stats/match-stats.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { PlayerComponent } from './player/player.component';
         MatchComponent,
         MatchListComponent,
         FilterBarComponent,
-        PlayerComponent
+        SmallStatView,
+        MatchStatsComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,11 @@
+<h3 class="header">Additional stats</h3>
+<div class="content">
+  <app-small-stat-view [stats]="stats['Yellow Team']" id="yellowStats"></app-small-stat-view>
+  <app-small-stat-view [stats]="stats[match.YellowTeamCaptain]"></app-small-stat-view>
+  <app-small-stat-view [stats]="stats[match.YellowTeamPlayer]"></app-small-stat-view>
+</div>
+<div class="content">
+  <app-small-stat-view [stats]="stats['Black Team']" id ="blackStats"></app-small-stat-view>
+  <app-small-stat-view [stats]="stats[match.BlackTeamCaptain]"></app-small-stat-view>
+  <app-small-stat-view [stats]="stats[match.BlackTeamPlayer]"></app-small-stat-view>
+</div>
